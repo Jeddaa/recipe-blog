@@ -1,5 +1,5 @@
 <% if @recipes.blank? %>
-  <p>There are no recipes for you yet.</p>
+  <p> You have not created any recipes yet </p>
     <button class= "rounded border-2 p-2 mt-4">
     <%= link_to "Create new recipe", new_user_recipe_path(current_user) %>
   </button>

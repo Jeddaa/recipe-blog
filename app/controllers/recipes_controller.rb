@@ -1,12 +1,18 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index_public]
 
   def index
     @recipes = Recipe.includes(:user).where(user_id: current_user.id)
   end
 
   def show
-    @recipes = Recipe.find_by(id: params[:id])
+    if current_user.nil?
+      user = User.find_by_id(params[:id])
+      current_user =  user
+      # @recipes = Recipe.includes(:user).where(user_id: user.id, public: true)
+    else
+      @recipe = Recipe.find_by(id: params[:id])
+    end
   end
 
   def new
@@ -28,7 +34,7 @@ class RecipesController < ApplicationController
   end
 
   def index_public
-    @recipes = Recipe.where(public: true)
+    @public_recipes = Recipe.includes(:user).where(public: true)
   end
 
   def recipe_params
