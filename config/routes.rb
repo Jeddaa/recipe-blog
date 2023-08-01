@@ -10,7 +10,13 @@ Rails.application.routes.draw do
   resources :users
   resources :foods, only: [:index]
 
-  
+  resources :recipes, only: [:index, :show, :new, :create, :destroy] do
+    resources :recipe_foods, only: [:new, :create, :destroy, :edit, :update]
+  end
+
+  get '/public_recipes', to: 'recipes#public_recipe', as: 'public_recipes'
+  get '/shopping_list', to: 'shopping_list#index', as: 'general_shopping_list'
+
   root "foods#index"
 
 end

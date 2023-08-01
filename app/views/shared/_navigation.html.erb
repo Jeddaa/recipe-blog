@@ -2,7 +2,10 @@
   <nav class="nav-bar">
     <ul>
       <li><%= link_to 'Food Items', foods_path %></li>
-      
+      <li><%= link_to 'Recipes', recipes_path %></li>
+      <li><%= link_to 'Shopping list', general_shopping_list_path %></li>
+      <li><%= link_to 'Public Recipies', public_recipes_path %></li>
+      <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: "submit-button" %>
     </ul>
   </nav>
 </header>
