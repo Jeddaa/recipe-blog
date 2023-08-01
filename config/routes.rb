@@ -7,8 +7,10 @@ Rails.application.routes.draw do
 
   # resources :users
 
-  
+  resources :users
+  resources :foods, only: [:index]
 
-  root "users#index"
+  
+  root "foods#index"
 
 end
