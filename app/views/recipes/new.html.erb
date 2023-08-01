@@ -1,0 +1,20 @@
+<h1>Create a New Recipe</h1>
+
+<%= form_with(model: @recipe, url: user_recipes_path(user_id: params[:user_id] ), local: true) do |form| %>
+   <%= form.label :recipe_name %>
+  <%= form.text_field :recipe_name %>
+
+  <%= form.label :preparation_time %>
+  <%= form.text_area :preparation_time %>
+
+  <%= form.label :cooking_time %>
+  <%= form.text_area :cooking_time %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
+  <%= form.label :public %>
+  <%= form.text_area :public %>
+
+  <%= form.submit "Create Recipe" %>
+<% end %>
