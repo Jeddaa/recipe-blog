@@ -39,3 +39,68 @@
   tr:nth-child(odd) {
     background-color: #fff;
   }
+
+  /* New Action for food */
+
+  .add-food-form-div {
+    width: 80%;
+    margin-top: 10px;
+  }
+  
+  .field {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  
+  .add-ingredient-to-db-btn-div {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .add-ingredient-button-div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+    width: 85%;
+  }
+  
+  .btn {
+    margin-bottom: 20px;
+    padding: 10px 10px;
+    color: white;
+    background-color: black;
+    font-size: 18px;
+    border: 0;
+    cursor: pointer;
+    transition: 1s;
+  }
+  
+  .btn:hover {
+    color: white;
+    background-color: rgb(48, 221, 48);
+  }
+  
+  .ingredient-delete-btn {
+    padding: 7px;
+    background: rgb(247, 7, 7);
+    color: white;
+    border: 0;
+  }
+  
+  .add-food-form {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .add-ingredient-to-db-btn {
+    margin-bottom: 20px;
+    padding: 10px 10px;
+    color: white;
+    background-color: black;
+    font-size: 18px;
+    border: 0;
+    cursor: pointer;
+    transition: 1s;
+  }
