@@ -7,8 +7,8 @@ class RecipesController < ApplicationController
 
   def show
     if current_user.nil?
-      user = User.find_by_id(params[:id])
-      current_user =  user
+      User.find_by_id(params[:id])
+
       # @recipes = Recipe.includes(:user).where(user_id: user.id, public: true)
     else
       @recipe = Recipe.find_by(id: params[:id])
@@ -23,17 +23,17 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save
-      redirect_to user_recipes_path(current_user.id), notice: 'Recipe was successfully created.'
+      redirect_to recipes_path(current_user.id), notice: 'Recipe was successfully created.'
     else
       render :new
     end
   end
 
-  def destroy
-  end
+  def destroy; end
 
   def public_recipe
-    @public_recipes = Recipe.includes(:user).where(public: true)
+    @public_recipes = Recipe.where(public: true)
+    # @public_recipes = Recipe.includes(:user).where(public: true)
   end
 
   def recipe_params

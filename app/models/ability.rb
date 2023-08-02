@@ -8,6 +8,7 @@ class Ability
 
     # additional permissions for logged in users (they can read their own recipe)
     return unless user.present?
+
     can :manage, :all
 
     can(:read, Recipe, user:)
