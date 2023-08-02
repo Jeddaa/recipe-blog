@@ -1,7 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe 'Foods', type: :request do
-  describe 'GET /index' do
-    pending "add some examples (or delete) #{__FILE__}"
+  # let(:user) { User.new(username: 'John Doe', email: "tester@test.com", password: "testing") }
+  # let(:food) do
+  #   @food = user.foods.build(food_name: "mashed potatoes", measurement_unit: "grams", price: 100, quantity: "20g")
+  # end
+
+  include Devise::Test::IntegrationHelpers
+
+  before(:each) do
+    @user =  User.create(username: 'John Doe', email: "tester@test.com", password: "testing")
+    sign_in @user
+  end
+
+
+  describe 'GET /food' do
+    it 'returns http success for foods#index' do
+      get foods_path
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'render correct foods#index' do
+      get foods_path
+      expect(response).to render_template(:index)
+    end
   end
 end
