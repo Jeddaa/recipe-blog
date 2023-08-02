@@ -1,7 +1,7 @@
-<% if @recipes.blank? %>
+<%= render partial: 'shared/navigation' %><% if @recipes.blank? %>
   <p> You have not created any recipes yet </p>
     <button class= "rounded border-2 p-2 mt-4">
-    <%= link_to "Create new recipe", new_user_recipe_path(current_user) %>
+    <%= link_to "Create new recipe", new_recipe_path(current_user) %>
   </button>
 <%else%>
   <ul class="flex flex-col p-5">
@@ -21,10 +21,10 @@
         </div>
         <div class="flex flex-col gap-2">
           <button class= "rounded border-2 p-2 mt-4">
-            <%= link_to "Show", user_recipe_path(current_user, recipe) %>
+            <%= link_to "Show recipe details", recipe_path(recipe) %>
           </button>
           <button class= "rounded border-2 p-2 mt-4">
-            <%= link_to "Delete", user_recipe_path(current_user, recipe), method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= link_to "Delete", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure?" } %>
           </button>
         </div>
       </div>

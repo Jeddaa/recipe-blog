@@ -1,3 +1,4 @@
+<%= render partial: 'shared/navigation' %>
 <% if @public_recipes.blank? %>
   <p> There are no public recipes available </p>
   <button class= "rounded border-2 p-2 mt-4" >
@@ -6,7 +7,7 @@
   <% if can? :create, @recipe %>
     <div>
       <button class= "rounded border-2 p-2 mt-4">
-        <%= link_to "Create new recipe", new_user_recipe_path(current_user) %>
+        <%= link_to "Create new recipe", new_recipe_path(current_user) %>
       </button>
     </div>
   <% end %>
@@ -19,7 +20,7 @@
       <div class = "border rounded border-black flex flex-row p-3 justify-between w-5/6">
         <div class="flex flex-col gap-2">
           <div class="flex flex-row justify-between">
-            <%= link_to "#{recipe.recipe_name}", user_recipe_path(recipe.user, recipe)%>
+            <%= link_to "#{recipe.recipe_name}", recipe_path(recipe.user, recipe)%>
             <h1><%= recipe.recipe_name %></h1>
             <h1><%= recipe.preparation_time %></h1>
             <h1><%= recipe.cooking_time %></h1>
@@ -35,7 +36,7 @@
       <% if can? :create, @recipe %>
         <div>
           <button class= "rounded border-2 p-2 mt-4">
-            <%= link_to "Create new recipe", new_user_recipe_path(current_user) %>
+            <%= link_to "Create new recipe", new_recipe_path(current_user) %>
           </button>
         </div>
       <% end %>

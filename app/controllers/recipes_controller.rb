@@ -23,7 +23,6 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save
-      puts 'saved recipe'
       redirect_to user_recipes_path(current_user.id), notice: 'Recipe was successfully created.'
     else
       render :new
@@ -33,7 +32,7 @@ class RecipesController < ApplicationController
   def destroy
   end
 
-  def index_public
+  def public_recipe
     @public_recipes = Recipe.includes(:user).where(public: true)
   end
 
