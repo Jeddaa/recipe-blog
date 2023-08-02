@@ -1,4 +1,3 @@
 class RecipesController < ApplicationController
-    def public_recipe
-    end
+  def public_recipe; end
 end

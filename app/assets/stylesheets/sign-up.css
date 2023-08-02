@@ -57,36 +57,12 @@ h2 {
   align-self: center;
 }
 
-.qty_and_amount {
+.shared_devise_links {
+  color: green;
+  font-weight: bold;
+}
+
+.devise-links {
   display: flex;
-  width: 40%;
-  margin: auto;
-  justify-content: space-between;
-  margin-bottom: 50px;
-}
-
-.qty_and_amount p {
-  font-size: 18px;
-}
-
-.recipe_new {
-  width: 60%;
-  margin: auto;
-}
-
-.edit_recipe_food {
-  display: flex;
-  justify-content: center;
-  width: 60%;
-  margin: auto;
-}
-
-.update_food {
-  margin-top: 40px;
-}
-
-.links {
-  color: blue;
-  text-decoration: underline;
-  margin-top: 7px;
+  flex-direction: column;
 }
