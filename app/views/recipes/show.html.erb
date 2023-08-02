@@ -1,1 +1,62 @@
-<%= render partial: 'shared/navigation' %>
+<%= render partial: 'shared/navigation' %><% if can? :create, @recipe %>
+<div class= "flex flex-col p-6 justify-center">
+  <div>
+    <h2 class="">Recipe <%= @recipe.id%>: <%= @recipe.recipe_name %> </h2>
+  </div>
+  <div class="flex flex-row justify-between">
+    <div class="flex flex-col gap-3 justify-between">
+      <h1>Preparation time: <%= @recipe.preparation_time %></h1>
+      <h1> Cooking time: <%= @recipe.cooking_time %></h1>
+    </div>
+    <div>
+      <div class="form-check form-switch flex gap-2 justify-end">
+        <label class="form-check-label mt-0 p-0" for="publicToggle">Public</label>
+        <% if @recipe.public? %>
+          <input type="checkbox" class=" mt-1 form-check-input" id="publicToggle" checked disabled>
+        <% else %>
+          <input type="checkbox" class="form-check-input" id="publicToggle" disabled>
+        <% end %>
+
+      </div>
+    </div>
+   </div>
+  <div class="">
+    <h1>Description </h1>
+    <p><%= @recipe.description %><p>
+  </div>
+  <div class="flex flex-row justify-between">
+      <button class= "rounded border-2 p-2 mt-4">
+        <%= link_to "Generate shopping list", general_shopping_list_path %>
+      </button>
+       <button class= "rounded border-2 p-2 mt-4">
+        <%= link_to "Add ingredient", foods_path %>
+      </button>
+    </div>
+    <div>
+      <button class= "rounded border-2 p-2 mt-4">
+        <%= link_to "Create new recipe", new_recipe_path(current_user) %>
+      </button>
+    </div>
+  <% end %>
+  <table class="recipe-table my-5 w-full">
+    <tr>
+      <th class="recipe-table" >Food</th>
+      <th class="recipe-table" >Quantity</th>
+      <th class="recipe-table" >Value</th>
+      <th class="recipe-table" >Actions</th>
+    </tr>
+    <tr>
+      <td class="recipe-table">Apples</td>
+      <td class="recipe-table">5</td>
+      <td class="recipe-table">$10</td>
+      <td class="recipe-table">Modify Remove</td>
+    </tr>
+  </table>
+  <div class="">
+    <button class= "rounded border-2 p-2 mt-4">
+      <%= link_to "Delete", recipe_path(current_user, @recipe), method: :delete, data: { confirm: "Are you sure?" } %>
+    </button>
+  </div>
+
+</div>
+
