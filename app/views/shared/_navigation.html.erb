@@ -1,0 +1,11 @@
+<header>
+  <nav class="nav-bar">
+    <ul>
+      <li><%= link_to 'Food Items', foods_path, class: 'links' %></li>
+      <li><%= link_to 'Recipes', recipes_path, class: 'links' %></li>
+      <li><%= link_to 'Shopping list', general_shopping_list_path, class: 'links' %></li>
+      <li><%= link_to 'Public Recipies', public_recipes_path, class: 'links' %></li>
+      <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: "submit-button" %>
+    </ul>
+  </nav>
+</header>
