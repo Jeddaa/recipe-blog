@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'Recipes', type: :request do
-
   include Devise::Test::IntegrationHelpers
 
   before(:each) do
-    @user =  User.create(username: 'John Doe', email: "tester@test.com", password: "testing")
+    @user = User.create(username: 'John Doe', email: 'tester@test.com', password: 'testing')
     sign_in @user
-    @recipe = Recipe.create(user: @user, recipe_name: "mashed potatoes", preparation_time: "1 hour", cooking_time: "1 hour 30 minutes", description: "Boil the potatoes till very soft then mash", public: true)
+    @recipe = Recipe.create(user: @user, recipe_name: 'mashed potatoes', preparation_time: '1 hour',
+                            cooking_time: '1 hour 30 minutes', public: true,
+                            description: 'Boil the potatoes till very soft then mash')
   end
 
   describe 'GET' do
@@ -37,11 +38,10 @@ RSpec.describe 'Recipes', type: :request do
     end
   end
 
-
   describe 'POST' do
     it 'creates a new recipe' do
-      recipe_param = { name: 'rice and peas', preparation_time: "30 mins", cooking_time: "1 hour",
-                             description: 'boil the rice and peas till soft' }
+      recipe_param = { recipe_name: 'rice and peas', preparation_time: '30 mins', cooking_time: '1 hour',
+                       description: 'boil the rice and peas till soft' }
       post recipes_path, params: { recipe: recipe_param }
       expect(response).to have_http_status(:success)
       expect(Recipe.count).to eq(1)

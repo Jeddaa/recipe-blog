@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-  let(:user) { User.new(username: 'John Doe', email: "tester@test.com", password: "testing") }
+  let(:user) { User.new(username: 'John Doe', email: 'tester@test.com', password: 'testing') }
   let(:recipe) do
-    user.recipes.build(recipe_name: "mashed potatoes", preparation_time: "1 hour", cooking_time: "1 hour 30 minutes", description: "Boil the potatoes till very soft then mash", public: true)
+    user.recipes.build(recipe_name: 'mashed potatoes', preparation_time: '1 hour', cooking_time: '1 hour 30 minutes',
+                       description: 'Boil the potatoes till very soft then mash', public: true)
   end
 
   before { recipe.save }

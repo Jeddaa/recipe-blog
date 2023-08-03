@@ -4,7 +4,7 @@ RSpec.describe 'Users', type: :request do
   include Devise::Test::IntegrationHelpers
 
   before(:each) do
-    @user =  User.create(username: 'John Doe', email: "tester@test.com", password: "testing")
+    @user = User.create(username: 'John Doe', email: 'tester@test.com', password: 'testing')
     sign_in @user
   end
 
