@@ -1,4 +1,4 @@
-<%= render partial: 'shared/navigation' %><% if can? :create, @recipe %>
+<%= render partial: 'shared/navigation' %>
 <div class= "flex flex-col p-6 justify-center">
   <div>
     <h2 class="">Recipe <%= @recipe.id%>: <%= @recipe.recipe_name %> </h2>
@@ -16,7 +16,6 @@
         <% else %>
           <input type="checkbox" class="form-check-input" id="publicToggle" disabled>
         <% end %>
-
       </div>
     </div>
    </div>
@@ -37,7 +36,6 @@
         <%= link_to "Create new recipe", new_recipe_path(current_user) %>
       </button>
     </div>
-  <% end %>
   <table class="recipe-table my-5 w-full">
     <tr>
       <th class="recipe-table" >Food</th>
@@ -52,11 +50,5 @@
       <td class="recipe-table">Modify Remove</td>
     </tr>
   </table>
-  <div class="">
-    <button class= "rounded border-2 p-2 mt-4">
-      <%= link_to "Delete", recipe_path(current_user, @recipe), method: :delete, data: { confirm: "Are you sure?" } %>
-    </button>
-  </div>
-
 </div>
 
