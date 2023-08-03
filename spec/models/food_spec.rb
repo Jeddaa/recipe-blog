@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Food, type: :model do
-  let(:user) { User.new(username: 'John Doe', email: 'tester@test.com', password: 'testing') }
+  let(:user) { User.create(username: 'John Doe', email: 'tester@test.com', password: 'testing') }
   let(:food) do
-    user.foods.build(food_name: 'mashed potatoes', measurement_unit: 'grams', price: 100, quantity: '20g')
+    user.foods.build(food_name: 'mashed potatoes', measurement_unit: 'grams', price: 100, quantity: 20)
   end
 
   before { food.save }
@@ -20,11 +20,21 @@ RSpec.describe Food, type: :model do
     expect(food.price).to be_an(Integer)
   end
 
+  it 'food quantity should be an integer' do
+    expect(food.quantity).to be_an(Integer)
+  end
+
   # this spec has to be done this way
   it 'food should not be valid if price is a string' do
     food.price = 'lkt'
     expect(food).to_not be_valid
     expect(food.errors[:price]).to include('is not a number')
+  end
+
+  it 'food should not be valid if quantity is a string' do
+    food.quantity = 'abc'
+    expect(food).to_not be_valid
+    expect(food.errors[:quantity]).to include('is not a number')
   end
 
   it 'food should not be valid if no quantity' do
