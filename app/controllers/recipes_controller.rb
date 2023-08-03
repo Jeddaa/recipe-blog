@@ -6,13 +6,10 @@ class RecipesController < ApplicationController
   end
 
   def show
-    if current_user.nil?
-      User.find_by_id(params[:id])
+    @recipe = Recipe.find(params[:id])
+    return unless @recipe.public && @recipe.user != current_user
 
-      # @recipes = Recipe.includes(:user).where(user_id: user.id, public: true)
-    else
-      @recipe = Recipe.find_by(id: params[:id])
-    end
+    redirect_to recipes_path, alert: 'You are not authorized to see this recipe.'
   end
 
   def new

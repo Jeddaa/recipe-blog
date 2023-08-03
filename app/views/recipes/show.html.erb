@@ -53,8 +53,8 @@
             <td><%= ingredient.food.food_name %></td>
             <td><%= ingredient.quantity %></td>
             <td><%= ingredient.food.price %></td>
-            <td><%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, ingredient), class:'td-btn' %>
-             <%= link_to 'Remove', recipe_recipe_food_path(@recipe, ingredient), method: :delete, class:'td-btn' %></td>
+            <td><%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, ingredient), class:'td-btn' %></td>
+            <td><%= button_to 'Remove', recipe_recipe_food_path(@recipe, ingredient), method: :delete, class: 'td-btn' %></td>
           </tr>
         <% end %>
       </tbody>
