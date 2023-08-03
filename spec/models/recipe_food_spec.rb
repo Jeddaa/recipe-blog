@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe RecipeFood, type: :model do
-  before (:each ) do
+  before(:each) do
     @user = User.create(username: 'John Doe', email: 'tester@test.com', password: 'testing')
-    @recipe = Recipe.create(recipe_name: 'mashed potatoes', preparation_time: '1 hour', cooking_time: '1 hour 30 minutes',
-                            description: 'Boil the potatoes till very soft then mash', public: true, user_id: @user.id)
-    @food =   Food.create(food_name: 'mashed potatoes', measurement_unit: 'grams', price: 100, quantity: 20, user_id: @user.id)
+    @recipe = Recipe.create(recipe_name: 'mashed potatoes', preparation_time: '1 hour', user_id: @user.id, public: true,
+                            description: 'Boil the potatoes til very soft then mash', cooking_time: '1 hour 30 minutes')
+    @food = Food.create(food_name: 'mashed potatoes', measurement_unit: 'grams', price: 100, quantity: 20,
+                        user_id: @user.id)
     @recipe_food = RecipeFood.create(quantity: 20, recipe_id: @recipe.id, food_id: @food.id)
   end
 

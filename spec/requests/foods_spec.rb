@@ -11,7 +11,7 @@ RSpec.describe 'Foods', type: :request do
   before(:each) do
     @user = User.create(username: 'John Doe', email: 'tester@test.com', password: 'testing')
     sign_in @user
-    @food = Food.create(food_name: "potatoes", measurement_unit: "grams", price: 100, quantity: 20, user: @user)
+    @food = Food.create(food_name: 'potatoes', measurement_unit: 'grams', price: 100, quantity: 20, user: @user)
   end
 
   describe 'GET /food' do
@@ -36,10 +36,9 @@ RSpec.describe 'Foods', type: :request do
     end
   end
 
-
   describe 'POST' do
     before(:each) do
-      food_param = { food_name: "pineapple", measurement_unit: "grams", price: 50, quantity: 50, user: @user }
+      food_param = { food_name: 'pineapple', measurement_unit: 'grams', price: 50, quantity: 50, user: @user }
       post foods_path, params: { food: food_param }
     end
     it 'creates a new food' do

@@ -1,7 +1,6 @@
 class Ability
   include CanCan::Ability
   def initialize(user)
-
     can :read, Recipe, public: true
 
     # additional permissions for logged in users (they can read their own recipe)

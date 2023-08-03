@@ -5,8 +5,8 @@ RSpec.describe 'Post', type: :feature do
   before(:each) do
     @user = User.new(username: 'John Doe', email: 'tester@test.com', password: 'testing')
     sign_in @user
-   @food1 = Food.create(food_name: "potatoes", measurement_unit: "grams", price: 100, quantity: 20, user: @user)
-   @food2 = Food.create(food_name: "plantain", measurement_unit: "grams", price: 10, quantity: 2, user: @user)
+    @food1 = Food.create(food_name: 'potatoes', measurement_unit: 'grams', price: 100, quantity: 20, user: @user)
+    @food2 = Food.create(food_name: 'plantain', measurement_unit: 'grams', price: 10, quantity: 2, user: @user)
   end
 
   describe 'recipes#index' do
