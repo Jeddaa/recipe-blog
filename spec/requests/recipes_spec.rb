@@ -22,7 +22,7 @@ RSpec.describe 'Recipes', type: :request do
       expect(response).to render_template(:index)
     end
 
-    it 'render correct recipe#index' do
+    it 'render correct recipe#show' do
       get recipe_path(@recipe.id)
       expect(response).to render_template(:show)
     end
@@ -39,12 +39,36 @@ RSpec.describe 'Recipes', type: :request do
   end
 
   describe 'POST' do
-    it 'creates a new recipe' do
+    before(:each) do
       recipe_param = { recipe_name: 'rice and peas', preparation_time: '30 mins', cooking_time: '1 hour',
-                       description: 'boil the rice and peas till soft' }
+                       description: 'boil the rice and peas till soft', public: false, user: @user }
       post recipes_path, params: { recipe: recipe_param }
-      expect(response).to have_http_status(:success)
-      expect(Recipe.count).to eq(1)
+    end
+    it 'creates a new recipe' do
+      expect(response.status).to eq(302)
+    end
+
+    it 'recipe name should be rice and peas' do
+      expect(Recipe.last.recipe_name).to eq('rice and peas')
+    end
+
+    it 'recipe public should be a false class' do
+      expect(Recipe.last.public).to be_a(FalseClass)
+    end
+
+    it 'recipe public should be false' do
+      expect(Recipe.last.public).to eq(false)
+    end
+
+    it 'recipe count should be 2' do
+      expect(Recipe.count).to eq(2)
+    end
+
+    it 'last recipe description should be same as recipe_params' do
+      expect(Recipe.last.description).to include('boil the rice and peas')
+    end
+    it 'first recipe description should be same as 1st recipe added' do
+      expect(Recipe.first.description).to include('Boil the potatoes')
     end
   end
 end
