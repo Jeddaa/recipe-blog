@@ -6,7 +6,7 @@
   <div class='add-food-form-div'>
     <%= form_with model: @food, url: foods_path, method: :post, local: true do |form| %>
       <div class='field'>
-        <%= form.text_field :name, placeholder: 'Ingredient name', class: 'add-food-form'%>
+        <%= form.text_field :food_name, placeholder: 'Ingredient name', class: 'add-food-form'%>
       </div>
       <div class='field'>
         <%= form.select :measurement_unit, options_for_select(['grams', 'kg', 'ounce', 'millilitres', 'litres']), { prompt: 'Measuring Unit' }, class: 'field', class: 'add-food-form' %>
