@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_130455) do
   enable_extension "plpgsql"
 
   create_table "foods", force: :cascade do |t|
-    t.string "food_name"
+    t.string "name"
     t.string "measurement_unit"
     t.integer "price"
     t.string "quantity"
@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_130455) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.string "recipe_name"
+    t.string "name"
     t.string "preparation_time"
     t.string "cooking_time"
     t.text "description"
@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_130455) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
