@@ -1,0 +1,16 @@
+<%= render partial: 'shared/navigation' %>
+<section class="recipe-food-new">
+  <h2>Create new Recipe Food</h2>
+  <%= form_with model: [@recipe, @recipe_food], url: recipe_recipe_foods_path(@recipe) do |form| %>
+    <div class='recipe_new'>
+      <div >
+        <%= form.collection_select :food_id, Food.includes(:user).where(user_id: current_user.id), :id, :food_name, {class: 'add-food-form'}%>
+      </div>
+      <div >
+        <%= form.number_field :quantity, class: 'add-food-form' %>
+      </div>
+      <%= form.submit class: 'input submit'%>
+<% end %>
+    </div>
+    
+</section>

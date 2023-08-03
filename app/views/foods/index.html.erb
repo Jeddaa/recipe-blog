@@ -11,6 +11,7 @@
     <thead>
       <tr>
         <th>Food</th>
+        <th>Quantity</th>
         <th>Measuring Unit</th>
         <th>Unit Price</th>
         <th>Action</th>
@@ -20,6 +21,7 @@
       <% @all_foods.each do |food| %>
         <tr>
           <td> <%= food.food_name %></td>
+          <td> <%= food.quantity%></td>
           <td> <%= food.measurement_unit %></td>
           <td> <%= food.price %></td>
           <td><%= button_to 'Delete', food_path(food.id), method: :delete, class: 'ingredient-delete-btn' %></td>
