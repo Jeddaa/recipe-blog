@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :recipe_foods, through: :recipes
 
-  validates :username, presence: true
-  # uniqueness: true
+  validates :username, presence: true, uniqueness: true
+
+  def recent_recipes
+    recipes.order(created_at: :desc).limit(5)
+  end
 end

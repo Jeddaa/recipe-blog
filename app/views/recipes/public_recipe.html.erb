@@ -1,1 +1,29 @@
 <%= render partial: 'shared/navigation' %>
+<% if @public_recipes.blank? %>
+  <div class="p-5">
+    <p> There are no public recipes available </p>
+    <% if can? :create, @recipe %>
+      <div>
+        <button class= "rounded border-2 p-2 mt-4">
+          <%= link_to "Create new recipe", new_recipe_path(current_user) %>
+        </button>
+      </div>
+    <% end %>
+  </div>
+<%else%>
+  <ul class="flex flex-col p-5">
+    <% @public_recipes.each do |recipe|%>
+      <div class = "border rounded border-black flex flex-row p-3   m-3 justify-between w-7/8">
+        <div class="flex flex-col text-left">
+          <h2 class="m-0"><%= link_to "#{recipe.recipe_name}", recipe_path(recipe) %></h2>
+          <h1 class="" >
+            By: <%= recipe.user.username %>
+          </h1>
+        </div>
+        <div class="flex justify-start p-0 m-0">
+          <h1 class="px-0 mx-1"><%= recipe.description %></h1>
+        </div>
+      </div>
+    <% end %>
+  </ul>
+<% end %>
