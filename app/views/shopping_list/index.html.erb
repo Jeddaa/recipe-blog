@@ -17,7 +17,7 @@
     <tbody>
       <% @foods.each do |ingredient| %>
         <tr>
-          <td> <%= ingredient.name%></td>
+          <td> <%= ingredient.food_name%></td>
           <td> <%= "#{@quantity_delta[ingredient.id]} #{ingredient.measurement_unit}" %></td>
           <td> <%= number_to_currency(@prices[ingredient.id])%></td>
         </tr>

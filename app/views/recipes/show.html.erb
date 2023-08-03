@@ -29,7 +29,7 @@
         <%= link_to "Generate shopping list", general_shopping_list_path %>
       </button>
        <button class= "rounded border-2 p-2 mt-4">
-        <%= link_to "Add ingredient", foods_path %>
+        <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe) %>
       </button>
     </div>
     <div>
@@ -38,20 +38,28 @@
       </button>
     </div>
   <% end %>
-  <table class="recipe-table my-5 w-full">
-    <tr>
-      <th class="recipe-table" >Food</th>
-      <th class="recipe-table" >Quantity</th>
-      <th class="recipe-table" >Value</th>
-      <th class="recipe-table" >Actions</th>
-    </tr>
-    <tr>
-      <td class="recipe-table">Apples</td>
-      <td class="recipe-table">5</td>
-      <td class="recipe-table">$10</td>
-      <td class="recipe-table">Modify Remove</td>
-    </tr>
-  </table>
+  <table>
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Value</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @recipe.recipe_foods.each do |ingredient| %>
+          <tr>
+            <td><%= ingredient.food.food_name %></td>
+            <td><%= ingredient.quantity %></td>
+            <td><%= ingredient.food.price %></td>
+            <td><%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, ingredient), class:'td-btn' %>
+             <%= link_to 'Remove', recipe_recipe_food_path(@recipe, ingredient), method: :delete, class:'td-btn' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
   <div class="">
     <button class= "rounded border-2 p-2 mt-4">
       <%= link_to "Delete", recipe_path(current_user, @recipe), method: :delete, data: { confirm: "Are you sure?" } %>
