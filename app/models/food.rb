@@ -33,4 +33,3 @@ class Food < ApplicationRecord
     prices
   end
 end
-

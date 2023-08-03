@@ -9,4 +9,3 @@ class ShoppingListController < ApplicationController
     @total_price = @prices.values.sum
   end
 end
-  
