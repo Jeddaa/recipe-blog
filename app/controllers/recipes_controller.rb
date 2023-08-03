@@ -8,7 +8,6 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     return unless @recipe.public && @recipe.user != current_user
-
     redirect_to recipes_path, alert: 'You are not authorized to see this recipe.'
   end
 
@@ -20,13 +19,17 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save
-      redirect_to recipes_path(current_user.id), notice: 'Recipe was successfully created.'
+      redirect_to recipes_path, notice: 'Recipe was successfully created.'
     else
       render :new
     end
   end
 
-  def destroy; end
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to recipes_path, notice: 'Recipe was successfully deleted.'
+  end
 
   def public_recipe
     @public_recipes = Recipe.where(public: true)
@@ -36,8 +39,4 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:recipe_name, :preparation_time, :cooking_time, :description, :public)
   end
-
-  # def set_current_user
-  #   user = @current_user
-  # end
 end
