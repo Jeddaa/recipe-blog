@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <h3><b>Rails Blog Project</b></h3>
+  <h3><b>Recipe App</b></h3>
 
 </div>
 
@@ -11,15 +11,17 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 rails-blog-Project ](#-rails-blog-project-)
+- [📖 Recipe App ](#-recipe-app-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
+    - [Install](#install)
     - [Usage](#usage)
-    <!-- - [Deployment](#deployment) -->
+    - [Get into development](#get-into-development)
+    - [Run test](#run-test)
   - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
@@ -29,9 +31,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Rails Blog Project <a name="about-project"></a>
+# 📖 Recipe App <a name="about-project"></a>
 
-**rails-blog-Project** is a program developed to show the list of posts and empower readers to interact with them by adding comments and liking posts. It implements the functionality of <a href="https://rubyonrails.org/">Classes</a>.
+**Recipe App** is a rails app built for food lovers to share their favourite recipes <a href="https://rubyonrails.org/">Classes</a>.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -40,8 +42,14 @@
 <details>
 <summary>Client</summary>
   <ul>
-    <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
-    <li><a href="https://rubyonrails.org/">Ruby</a></li>
+    <li><a href="https://www.ruby-lang.org/en/">Rails</a></li>
+  </ul>
+</details>
+
+<details>
+<summary>Database</summary>
+  <ul>
+    <li><a href="https://www.postgres.com">Postgres</a></li>
   </ul>
 </details>
 
@@ -51,13 +59,9 @@
 
 <!-- - **Set up controller** -->
 
-<!-- - **Allow user to add comments**
-- **Allow user to add likes**
-- **Show all comments and likes** -->
-
-- **Setting up devise**
-- **Set up Ruby linters**
-- **Ruby best practices and language style guides in code**
+- **Authentication with devise**
+- **Users can set what recipes they want to make public**
+- **Generate shopping list based on your inventory or pantry**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -82,20 +86,19 @@ Install Ruby
 Go to github and find the repository Rails Blog-project
 Click on code and copy then go to your gitbash cli on your computer Clone this repository to your desired folder
 
-<!--
-Example commands:
+
 
 ```sh
   cd my-folder
-  git clone https://github.com/Jeddaa/rails-blog.git
+  git clone https://github.com/Jeddaa/recipe-blog.git
   bundle install
+
 ```
---->
 
 ### Install
 
 ```
-git clone https://github.com/Jeddaa/rails-blog.git
+git clone https://github.com/Jeddaa/recipe-blog.git
 ```
 
 ### Usage
@@ -105,6 +108,7 @@ To run the project, execute the following in a terminal.
 ```sh
 cd my-project
 gem install
+
 ```
 
 ### Get into development
@@ -113,12 +117,17 @@ gem install
 
 ```sh
 bin/rails db:setup
+
 ```
 
 - start server
 
 ```sh
 bin/rails server
+
+  OR
+
+rails s
 ```
 
 ### Run test
@@ -127,26 +136,10 @@ To run test, run the following command in the terminal
 
 ```sh
 rspec
+
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ### Deployment
-
-You can deploy this project using:
-GitHub Pages -->
-
-<!--
-Example:
-
-```sh
-  https://github.com/Jeddaa/rails-blog.git
-```
- -->
-
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
-
-<!-- AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
 
@@ -157,13 +150,19 @@ Example:
 - LinkedIn: [@jedda](https://linkedin.com/in/fatihahoduwole)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+👤 **Racheal Appiah-kubi**
+
+- GitHub: [@jeddaa](https://github.com/coderacheal)
+- Twitter: [jeddaah](https://twitter.com/racheal_kubi)
+- LinkedIn: [@jedda](https://linkedin.com/in/racheal_appiah-kubi)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **Implement the ui**
-- **Modify the login process**
-- **Implement the authentication**
+- **Improve UI**
+- **Deploy app**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
