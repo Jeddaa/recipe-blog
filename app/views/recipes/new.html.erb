@@ -1,3 +1,4 @@
+<%= render partial: 'shared/navigation' %>
 <div class="flex flex-col justify-center px-5 mx-0 w-5/6">
   <h1 class="py-5">Create a New Recipe</h1>
   <%= form_with(model: @recipe, url: recipes_path(user_id:current_user ), local: true) do |form|  %>
@@ -19,5 +20,4 @@
     </div>
     <%= form.submit "Create Recipe", class:"rounded border-2 p-2 mt-4 " %>
   <% end %>
-  </div>
-
+</div>
