@@ -1,0 +1,4 @@
+# // app/views/recipes/toggle.js.erb
+
+const checkbox = document.querySelector("#recipe_public");
+checkbox.checked = <%= @recipe.public ? 'true' : 'false' %>;

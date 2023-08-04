@@ -25,7 +25,7 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = @recipe.recipe_foods.create(recipe_food_params)
 
     if @recipe_food.save
-      redirect_to recipe_path(@recipe, @recipe_food)
+      redirect_to recipe_path(@recipe)
     else
       render 'new'
     end

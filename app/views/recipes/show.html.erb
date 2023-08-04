@@ -8,16 +8,29 @@
       <h1>Preparation time: <%= @recipe.preparation_time %></h1>
       <h1> Cooking time: <%= @recipe.cooking_time %></h1>
     </div>
-    <div>
-      <div class="form-check form-switch flex gap-2 justify-end">
-        <label class="form-check-label mt-0 p-0" for="publicToggle">Public</label>
-        <% if @recipe.public? %>
-          <input type="checkbox" class=" mt-1 form-check-input" id="publicToggle" checked disabled>
-        <% else %>
-          <input type="checkbox" class="form-check-input" id="publicToggle" disabled>
-        <% end %>
-      </div>
-    </div>
+      <div>
+        <div class="form-check form-switch flex gap-2">
+          <% if @recipe.public? %>
+            <span class="text-green-500 p-2 mb-2">Public</span>
+            <% if can? :manage, @recipe %>
+              <%= link_to "#{toggle_recipe_path(@recipe)}"  do%>
+                <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                <input type="checkbox" value="" class="sr-only peer" checked>
+                <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                </label>
+              <%end%>
+            <%end%>
+          <% else %>
+            <span class="text-red-500 p-2 px-4">Public</span>
+            <%= link_to "#{toggle_recipe_path(@recipe)}" do%>
+              <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                  <input type="checkbox" value="" class="sr-only peer">
+                  <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+              </label>
+            <%end%>
+          <% end %>
+        </div>
+</div>
   </div>
   <div class="">
     <h1>Description </h1>
@@ -33,10 +46,9 @@
   </div>
   <div>
     <button class= "rounded border-2 p-2 mt-4">
-      <%= link_to "Create new recipe", new_recipe_path(current_user) %>
+      <%= link_to "Create new recipe", new_recipe_path %>
     </button>
   </div>
-  <%# <% end %>
   <table>
     <thead>
       <tr>
