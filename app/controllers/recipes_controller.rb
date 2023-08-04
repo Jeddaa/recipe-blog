@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, except: %i[index_public]
+  before_action :authenticate_user!
 
   def index
     @recipes = Recipe.includes(:user).where(user_id: current_user.id)
@@ -7,8 +7,6 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    return unless @recipe.public && @recipe.user != current_user
-    redirect_to recipes_path, alert: 'You are not authorized to see this recipe.'
   end
 
   def new
@@ -25,6 +23,12 @@ class RecipesController < ApplicationController
     end
   end
 
+  def toggle
+    @recipe = Recipe.find(params[:id])
+    @recipe.toggle!(:public)
+    redirect_to @recipe
+  end
+
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
@@ -33,7 +37,6 @@ class RecipesController < ApplicationController
 
   def public_recipe
     @public_recipes = Recipe.where(public: true)
-    # @public_recipes = Recipe.includes(:user).where(public: true)
   end
 
   def recipe_params
