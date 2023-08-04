@@ -1,0 +1,28 @@
+<%= render partial: 'shared/navigation' %>
+<section>
+  <h2>Shopping List</h2>
+  <div class='qty_and_amount'>
+    <p>Amount of food items to buy: <%=  [@foods.length, 0].max %> </p>
+    <p>Total value of food needed: <%= number_to_currency(@total_price) %> </p>
+  </div>
+  <div class='food-table'>
+  <table>
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Price ($)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @food_item.each do |food| %>
+        <tr>
+          <td><%= food.food_name %></td>
+          <td><%= "#{@quantity_difference[food.id]} #{food.measurement_unit}" %></td>
+          <td><%= number_to_currency(@quantity_difference[food.id] * food.price) %></td>      
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</section>

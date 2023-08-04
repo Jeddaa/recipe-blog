@@ -1,0 +1,22 @@
+<div class='sign_up_div'>
+  <div>
+    <%= image_tag('signup_image.jpg', class: 'signup_image') %>
+  </div>
+  <div class='form_div'>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class='form'>
+        <h2>Sign up</h2>
+        <%= f.text_field :username, autofocus: true, placeholder: 'Name', class: 'input' %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input', placeholder: 'Enter email'%>
+        <%= f.password_field :password, autocomplete: "new-password", class: 'input', placeholder: 'Enter password' %><br />
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input',placeholder: 'Confirm password' %> <br>
+        <%= f.submit "Sign up", class: 'input submit'%> <br>
+        <p>Already have an account? <%= link_to "Log in", new_session_path(resource_name) %><br /></p>
+      </div>
+    <% end %>
+  </div>
+</div>

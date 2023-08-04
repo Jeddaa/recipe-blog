@@ -1,0 +1,32 @@
+<%= render partial: 'shared/navigation' %>
+<div class='food-index-page'>
+  <h1 style='color: rgb(48, 221, 48);'>Welcome back!</h1>
+  <h3>This is what you currently have in your pantry</h3>
+  <div class='add-ingredient-button-div'>
+    <%= button_to 'Add Food', new_food_path, class: 'btn', method: :get %>
+  </div>
+</div>
+<div class='food-table'>
+  <table>
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Measuring Unit</th>
+        <th>Unit Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @all_foods.each do |food| %>
+        <tr>
+          <td> <%= food.food_name %></td>
+          <td> <%= food.quantity%></td>
+          <td> <%= food.measurement_unit %></td>
+          <td> <%= food.price %></td>
+          <td><%= button_to 'Delete', food_path(food.id), method: :delete, class: 'ingredient-delete-btn' %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

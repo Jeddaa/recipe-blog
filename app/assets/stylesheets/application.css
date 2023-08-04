@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+p, h1, h2, h2 {
+  color: black;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+.recipe-name  {
+  font-size: 20px;
+}
+
+.ribbon {
+  font-size: 30px;
+}
