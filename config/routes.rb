@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   resources :recipes, only: [:index, :show, :new, :create, :destroy] do
     resources :recipe_foods, only: [:new, :create, :destroy, :edit, :update]
+    member do
+      get :toggle
+    end
   end
 
   get '/general_shopping_list', to: 'shopping_list#index', as: 'general_shopping_list'
