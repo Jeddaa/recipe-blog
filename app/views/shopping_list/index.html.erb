@@ -15,13 +15,13 @@
       </tr>
     </thead>
     <tbody>
-      <% @foods.each do |ingredient| %>
+      <% @food_item.each do |food| %>
         <tr>
-          <td> <%= ingredient.food_name%></td>
-          <td> <%= "#{@quantity_delta[ingredient.id]} #{ingredient.measurement_unit}" %></td>
-          <td> <%= number_to_currency(@prices[ingredient.id])%></td>
+          <td><%= food.food_name %></td>
+          <td><%= "#{@quantity_difference[food.id]} #{food.measurement_unit}" %></td>
+          <td><%= number_to_currency(@quantity_difference[food.id] * food.price) %></td>      
         </tr>
-      <%end%>
+      <% end %>
     </tbody>
   </table>
 </div>
